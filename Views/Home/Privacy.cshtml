@@ -1,0 +1,34 @@
+﻿@{
+    ViewData["Title"] = "Privacy Policy";
+    var user = ViewData.Model;
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Use this page to detail your site's privacy policy.</p>
+<img src="@ViewBag.ImageData"> 
+@{
+    var cnt = 1;
+    foreach(ImagePassToViewData item in user)
+    {
+        <div onClick=GFG_click(@cnt)><img src=@item.data> </div>
+        <div id=@cnt  style="display:none">@item.description</div>
+        cnt = cnt + 1;
+    }
+
+}
+@section scripts{
+    <script>
+        //alert("Hi Privacy");
+        function GFG_click(clicked){
+            //alert(clicked);
+            var block1 = document.getElementById(clicked);
+            if (block1.style.display == "none") {
+                    block1.style.display = "block";
+            }
+            else {
+                    block1.style.display = "none";
+            }
+                
+        }
+    </script>
+}

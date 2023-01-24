@@ -67,21 +67,18 @@ namespace WebApplication3.Controllers
             {
                 string iptemp=user["file_id"].ToString();
                 var ipNew=new ObjectId(iptemp);
-                //Console.WriteLine($"{ipNew}+ Hi ");
-                /*string fileName = user["fileName"].ToString();
-                Console.WriteLine(fileName);*/
-                var bytes=await _userService.GetFileByNameAsync(ipNew);
+                
+                var bytes=await _userService.GetFileByIdAsync(ipNew);
                 //Console.WriteLine(bytes.Length);
                 string imreBase64Data = Convert.ToBase64String(bytes);
                 string imgDataURL = string.Format("data:image/png;base64,{0}", imreBase64Data);
-                //Passing image data in viewbag to view
+                
                 var imageData = new ImagePassToViewData()
                 {
                     description = user["Description"].ToString(),
                     data = imgDataURL,
                 };
                 termsList.Add(imageData);
-            //ViewBag.ImageData = imgDataURL;
             }
             ImagePassToViewData[] terms = termsList.ToArray();
             return View(terms);

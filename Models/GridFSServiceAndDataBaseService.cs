@@ -50,7 +50,7 @@ namespace WebApplication3.Models
             return id.ToString();
         }
         //public async 
-        public async Task<byte[]> GetFileByNameAsync(ObjectId Id)
+        public async Task<byte[]> GetFileByIdAsync(ObjectId Id)
         {
             return await bucket.DownloadAsBytesAsync(Id);
             //return await bucket.DownloadAsBytesAsync();
